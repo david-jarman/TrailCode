@@ -1,3 +1,5 @@
+from random import randint
+
 arr = []
 
 def heapify(_arr):
@@ -47,6 +49,14 @@ def heapSort(_arr):
         swap(_arr, 0, end)
         siftDown(_arr, 0, end)
 
-arr = [15,2,16,3,1,4,5,14,6,7,17,8,11,18,12,13,9,10]
+def randList():
+    listo = []
+    for i in range(1,100):
+        rando=randint(1,1000)
+        listo.append(rando)
+
+    return listo
+
+arr=randList()
 heapSort(arr)
 print arr
