@@ -37,8 +37,34 @@ class Queue(object):
 
         return string
 
+class Queue2(object):
+    def __init__(self):
+        self.s1 = []
+        self.s2 = []
+        
+    def enqueue(self, _data):
+        self.s1.append(_data)
 
-queue = Queue()
+    def dequeue(self):
+        if len(self.s2) == 0:
+            while len(self.s1) > 0:
+                self.s2.append(self.s1.pop())
+        
+        if len(self.s2) > 0:
+            return self.s2.pop()
+        else:
+            return None
+
+    def __str__(self):
+        string = ""
+        for item in self.s1:
+            string += " -> %s" % item
+
+        for item in self.s2:
+            string += " -> %s" % item
+        return string
+
+queue = Queue2()
 
 for x in range(1, 11):
     queue.enqueue(x)
