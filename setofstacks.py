@@ -21,11 +21,34 @@ class SetOfStacks(object):
         currentStackIndex = len(self.stacks) - 1
         currentStack = self.stacks[currentStackIndex]
 
-        element = currentStack.pop()
+        if len(currentStack) > 0:
+            element = currentStack.pop()
+        
         if len(currentStack) == 0:
-            self.stacks.pop()
+            if len(self.stacks) > 1:
+                self.stacks.pop()
 
         return element
+
+    def popAt(self, _index):
+        if _index < len(self.stacks):
+            stack = self.stacks[_index]
+            element = stack.pop()           
+
+            if len(stack) == 0:
+                if len(self.stacks) > 1:
+                    self.stacks.pop(_index)
+                return
+ 
+            #rollover other stacks if necessary
+            if len(self.stacks) > _index + 1:
+                for stackIndex in range(_index, len(self.stacks)-1):
+                    currentStack = self.stacks[stackIndex]
+                    nextStack = self.stacks[stackIndex+1]
+                    currentStack.append(nextStack.pop(0))
+                    if len(nextStack) == 0:
+                        if len(self.stacks) > 1:
+                            self.stacks.pop(stackIndex+1)
 
     def __str__(self):
         string = ""
@@ -43,6 +66,10 @@ for x in range(1,14):
 
 print stack
 
-for x in range(1,14):
-    stack.pop()
+for x in range(1,6):
+    stack.popAt(2)
     print stack
+
+#for x in range(1,13):
+#    stack.pop()
+#    print stack
