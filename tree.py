@@ -96,15 +96,41 @@ class BinaryTree(object):
             if current.right != None:
                 q.put(current.right)
 
-root = Node(1)
-root.left = Node(2)
-root.right = Node(3)
-root.left.left = Node(4)
-root.left.right = Node(5)
-root.right.left = Node(6)
-root.right.right = Node(7)
+
+#Given a sorted (increasing order) array, write an algorithm to create a binary tree with minimal height.
+def create_binary_tree(sorted_array):
+    tree = BinaryTree()
+
+    if len(sorted_array) == 0:
+        return None
+
+    return create_binary_tree_recursive(sorted_array, None, 0, len(sorted_array) - 1)
+
+def create_binary_tree_recursive(sorted_array, node, left, right):
+    if left >= right:
+        return None
+
+    index = ((right - left) // 2) + left
+
+    value = sorted_array[index]
+    new_node = Node(value)
+
+    if node != None:
+        if value < node.value:
+            node.left = new_node
+        else:
+            node.right = new_node
+
+    create_binary_tree_recursive(sorted_array, new_node, left, index)
+    create_binary_tree_recursive(sorted_array, new_node, index+1, right)
+        
+    return new_node
+
+sorted_array = range(25)
+
+root = create_binary_tree(sorted_array)
 
 tree = BinaryTree()
 tree.set_root(root)
 
-tree.breadth_first_print()
+tree.in_order_print(root)
