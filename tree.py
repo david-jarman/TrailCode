@@ -1,3 +1,5 @@
+from Queue import Queue
+
 class Node(object):
     def __init__(self, value):
         self.value = value
@@ -50,6 +52,50 @@ class BinaryTree(object):
 
         return heights
 
+    def pre_order_print(self, node):
+        if node == None:
+            return
+
+        print node.value
+
+        self.pre_order_print(node.left)
+
+        self.pre_order_print(node.right)
+
+    def in_order_print(self, node):
+        if node == None:
+            return
+
+        self.in_order_print(node.left)
+
+        print node.value
+
+        self.in_order_print(node.right)
+
+    def post_order_print(self, node):
+        if node == None:
+            return
+
+        self.post_order_print(node.left)
+        self.post_order_print(node.right)
+
+        print node.value
+
+    def breadth_first_print(self):
+        q = Queue()
+
+        q.put(self.root)
+        current = None
+
+        while q.empty() == False:
+            current = q.get()
+            print current.value
+
+            if current.left != None:
+                q.put(current.left)
+            if current.right != None:
+                q.put(current.right)
+
 root = Node(1)
 root.left = Node(2)
 root.right = Node(3)
@@ -61,12 +107,4 @@ root.right.right = Node(7)
 tree = BinaryTree()
 tree.set_root(root)
 
-print tree.isBalanced()
-
-root.left.left.left = Node(7)
-root.left.left.left.left = Node(8)
-root.left.left.left.left.left = Node(9)
-
-
-
-print tree.isBalanced()
+tree.breadth_first_print()
