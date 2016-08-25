@@ -17,10 +17,16 @@ def fibonacci_dp(n):
         map_dp[n] = result
 
     return result
+def fibonacci_iter(n):
+    cur_result = 1
+    prev_result = 0
 
-print fibonacci_dp(15)
-print fibonacci_dp(16)
-print fibonacci_dp(17)
-print fibonacci_dp(18)
-print fibonacci_dp(19)
-print fibonacci_dp(20)
+    for i in range(0, n):
+        tmp = cur_result
+        cur_result = cur_result + prev_result
+        prev_result = tmp
+
+    return cur_result
+        
+print fibonacci_iter(10)
+print fibonacci_dp(10)
