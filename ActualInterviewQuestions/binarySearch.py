@@ -19,7 +19,3 @@ def findIndexOfDate(orders, date):
 orders = [1,3,5,7,9,19]
 index = findIndexOfDate(orders, 14)
 print "element exists between %s and %s" % (index[0], index[1])
-
-# 3, 5, 7, 9
-
-# look for 1
