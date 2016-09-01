@@ -9,6 +9,20 @@ def five_one(N, M, i, j):
 
     return (N & mask) | (M << i)
 
+def five_two(decimal_str):
+    decimal_val = 0
+    try:
+        decimal_val = float(decimal_str)
+    except ValueError:
+        return "Error"
+
+    int_val = int(decimal_val)
+    float_val = decimal_val - int_val
+
+    int_str = ""
+
+    
+
 def bin(s):
     return str(s) if s <= 1 else bin(s>>1) + str(s&1)
 
@@ -19,4 +33,6 @@ M = 21
 i = 2
 j = 6
 
-print bin(five_one(N, M, i, j))
+#print bin(five_one(N, M, i, j))
+
+
