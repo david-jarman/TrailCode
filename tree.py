@@ -126,6 +126,47 @@ def create_binary_tree_recursive(sorted_array, node, left, right):
         
     return new_node
 
+def in_order_traverse_iterative(root):
+    stack = []
+    stack.append([root, False])
+
+    while len(stack):
+        node, visited = stack[-1]
+        if node and visited == False:
+            stack.append([node.left, False])
+        elif node and visited == True:
+            print node.value
+            stack.pop()
+            stack.append([node.right, False])
+        else:
+            stack.pop()
+            if len(stack):
+                stack[-1][1] = True
+
+def in_order_traverse_iterative_2(root):
+    stack = []
+    stack.append(root)
+    done = False
+    node = root
+
+    while not done:
+        if node:
+            stack.append(node)
+            node = node.left
+        else:
+            if len(stack) == 0:
+                done = True
+            else:
+                node = stack.pop()
+                print node.value
+                node = node.right
+
+
+#import pdb
+
+#pdb.set_trace()
+
+
 sorted_array = range(25)
 
 root = create_binary_tree(sorted_array)
@@ -133,4 +174,7 @@ root = create_binary_tree(sorted_array)
 tree = BinaryTree()
 tree.set_root(root)
 
-tree.in_order_print(root)
+#tree.in_order_print(root)
+
+print "our latest"
+in_order_traverse_iterative_2(root)
