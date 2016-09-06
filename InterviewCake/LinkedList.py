@@ -72,4 +72,4 @@ def test_list():
         l_list.delete(i)
         print l_list
 
-test_list()
+#test_list()
