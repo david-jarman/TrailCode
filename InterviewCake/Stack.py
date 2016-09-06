@@ -1,4 +1,4 @@
-class Stack:
+class Stack(object):
 
     # initialize an empty list
     def __init__(self):
