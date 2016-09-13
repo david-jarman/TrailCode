@@ -15,12 +15,8 @@ def bracket_validator(string):
     return len(stack) == 0
 
 def open_matches(_open, _close):
-    if _open == '{':
-        return _close == '}'
-    elif _open == '(':
-        return _close == ')'
-    elif _open == '[':
-        return _close == ']'
+    matching_paren_dict = { '{': '}', '(': ')', '[': ']' }
+    return _close == matching_paren_dict[_open]
 
 
 print bracket_validator("{ [ ] ( ) }"), 'True'

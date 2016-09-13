@@ -4,7 +4,7 @@ def get_products_of_all_ints_except_at_index(int_list):
 
     for index, value in enumerate(int_list):
         products[index] = product_so_far
-        product_so_far *= int_list[index]
+        product_so_far *= value
 
     i = len(int_list) - 1
     product_so_far = 1
